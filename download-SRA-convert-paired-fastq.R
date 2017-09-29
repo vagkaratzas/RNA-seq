@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 #Download experiment files (.sra)
 #need SraRunInfo.csv before execution
 #from https://www.ncbi.nlm.nih.gov/sra: Send to (top right corner), Select “File”,  Select format “RunInfo”,  Click on “Create File"
