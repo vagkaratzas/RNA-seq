@@ -6,7 +6,22 @@ qA <- qAlign("sampleFile.txt", "BSgenome.Hsapiens.UCSC.hg19") #create the alignm
 save(qA, file = "qAlign.RData") #save the qProject variable to outfile qAlign.RData
 #load("qAlign.RData") #in case session is destroyed
 
-qC <- qCount(qA, NULL, reportLevel="junction") #mode 4/4 test, exon-exon junctions
-write.table(qC, "qCount.csv", sep=",") #write result to qCount.csv
-save(qC, file = "qAlign.RData") #save the qC variable if write.table fails
+#qC <- qCount(qA, NULL, reportLevel="junction") #mode 4/4 test, exon-exon junctions
+#write.table(qC, "qCount.csv", sep=",") #write result to qCount.csv
+#save(qC, file = "qAlign.RData") #save the qC variable if write.table fails
 
+files <- list.files(pattern = "\\.bam$")
+for(f in files) { #for all generated bam files
+	system2("cufflinks", files) #run cufflinks for final output
+	exp_name <- substr(f,0,10)
+	folder_name <- paste(exp_name,"_folder",sep="") #new folder to be created for each experiment
+	dir.create(file.path(getwd(), folder_name) #moving to corresponding folder by name
+	target_dir_file <- paste(exp_name,"transcripts.gtf",sep="/") #moving all cufflinks generated files one by one
+	file.rename(from="transcripts.gtf", to=target_dir_file)
+	target_dir_file <- paste(exp_name,"isoforms.fpkm_tracking",sep="/")
+	file.rename(from="isoforms.fpkm_tracking.gtf", to=target_dir_file)
+	target_dir_file <- paste(exp_name,"genes.fpkm_tracking",sep="/")
+	file.rename(from="genes.fpkm_tracking", to=target_dir_file)
+	target_dir_file <- paste(exp_name,"skipped.gtf",sep="/")
+	file.rename(from="skipped.gtf", to=target_dir_file)
+}
