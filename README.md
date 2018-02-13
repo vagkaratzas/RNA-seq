@@ -11,7 +11,7 @@ Needs SraRunInfo.csv to be downloaded before execution.
 From https://www.ncbi.nlm.nih.gov/sra query your dataset and then: Send to (top right corner), Select “File”,  Select format “RunInfo”,  Click on “Create File".
 This script also creates the sampleFile.txt which is needed as input for the next script (alignment and counting).
 
-# qAlign + qCount
+# qAlign + qCount -> rnaseq.R
 * Please install the QuasR package beforehand.
 
 #Input types should be .fastq, .fasta or .bam files
