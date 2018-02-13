@@ -18,6 +18,6 @@ annotFile <- "Homo_sapiens.GRCh38.83.chr.gtf"
 chrLen <- scanFaIndex("BSgenome.Hsapiens.NCBI.GRCh38.fasta")
 chrominfo <- data.frame(chrom=as.character(seqnames(chrLen)), length=width(chrLen), is_circular=rep(FALSE, length(chrLen)))
 txdb <- makeTxDbFromGFF(file=annotFile, format="gtf", chrominfo=chrominfo, dataSource="NCBI", organism="Homo sapiens")
-geneLevels <- qCount(proj, txdb, reportLevel="gene") #check how txdb is made
+geneLevels <- qCount(proj2, txdb, reportLevel="gene") #check how txdb is made
 #geneLevels #DEBUG
 write.table(geneLevels, "gene_count.txt", row.names=TRUE, col.names=TRUE, sep="/t")
