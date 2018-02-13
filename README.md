@@ -3,6 +3,7 @@
 
 # download-SRA-convert-paired-fastq.R
 
+* In case you start with .sra files instead of FASTQ or FASTA:
 * Please install the fastq-dump for linux beforehand and add fastq-dump to the PATH.
 
 Downloads experiment files (.sra).
