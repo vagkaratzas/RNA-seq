@@ -19,8 +19,9 @@ y <- estimateDisp(y,design) #estimates dispersion
 # To perform quasi-likelihood F-tests:
 fit <- glmQLFit(y,design)
 qlf <- glmQLFTest(fit,coef=2)
-topTags(qlf)
+tT <- topTags(qlf, n=100, sort.by="logFC")
 #To perform likelihood ratio tests:
 #fit <- glmFit(y,design)
 #lrt <- glmLRT(fit,coef=2)
 #topTags(lrt)
+write.table(tT, "gene_dif_exp.txt", row.names=TRUE, col.names=TRUE, sep="\t")
