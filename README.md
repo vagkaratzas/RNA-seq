@@ -25,7 +25,9 @@ This script also creates the sampleFile.txt which is needed as input for the nex
 
 * Important: same version of annotation file (.gtf) and genomeFile (.fasta)
 
-# differential_expression.R
+# dif_exp.R
 #edgeR
+#Reads the count table created by QuasR as input (it removes the width column).
+The user should manually add the "Symbol" column name above the first column (gene names) in the gene_count.txt file before executing dif_exp.R
 
-#UNDER CONSTRUCTION
+The script final outputs the top 100 genes sorted by descending absolute fold change.
